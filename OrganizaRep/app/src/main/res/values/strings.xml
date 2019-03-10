@@ -1,0 +1,4 @@
+<resources>
+    <string name="app_name">OrganizaRep</string>
+    <string name="network_not_connected">Sem conexão com Internet</string>
+</resources>
