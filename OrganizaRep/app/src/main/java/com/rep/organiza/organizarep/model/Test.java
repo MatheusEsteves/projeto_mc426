@@ -1,4 +1,4 @@
-package com.rep.organiza.organizarep;
+package com.rep.organiza.organizarep.model;
 
 import com.google.gson.annotations.SerializedName;
 
