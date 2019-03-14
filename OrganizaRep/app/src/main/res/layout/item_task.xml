@@ -5,7 +5,8 @@
     android:layout_width="match_parent"
     android:layout_height="220dp"
     android:orientation="vertical"
-    android:padding="15dp">
+    android:padding="15dp"
+    android:background="@drawable/layout_round_corner_task">
 
     <TextView
         android:id="@+id/tv_task_title"
@@ -57,6 +58,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="10dp"
         android:orientation="horizontal"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/tv_user_name">
 
@@ -73,7 +75,7 @@
                 android:id="@+id/tv_sunday"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Dom"
+                android:text="@string/domingo"
                 android:textColor="@color/colorText"
                 android:textSize="14dp"
                 app:layout_constraintEnd_toEndOf="parent"
@@ -84,7 +86,7 @@
                 android:layout_width="20dp"
                 android:layout_height="20dp"
                 android:layout_marginTop="4dp"
-                android:src="@color/colorNotFound"
+                android:src="@color/colorDoneTask"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/tv_sunday" />
@@ -95,7 +97,6 @@
             android:id="@+id/constraintLayoutMonday"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="8dp"
             android:orientation="vertical"
             app:layout_constraintEnd_toStartOf="@+id/constraintLayoutTuesday"
             app:layout_constraintHorizontal_bias="0.5"
@@ -105,7 +106,7 @@
                 android:id="@+id/tv_monday"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Seg"
+                android:text="@string/segunda"
                 android:textColor="@color/colorText"
                 android:textSize="14dp"
                 app:layout_constraintEnd_toEndOf="parent"
@@ -116,7 +117,7 @@
                 android:layout_width="20dp"
                 android:layout_height="20dp"
                 android:layout_marginTop="4dp"
-                android:src="@color/colorNotFound"
+                android:src="@color/colorDoneTask"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/tv_monday" />
@@ -136,7 +137,7 @@
                 android:id="@+id/tv_tuesday"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Ter"
+                android:text="@string/terca"
                 android:textColor="@color/colorText"
                 android:textSize="14dp"
                 app:layout_constraintEnd_toEndOf="parent"
@@ -147,7 +148,7 @@
                 android:layout_width="20dp"
                 android:layout_height="20dp"
                 android:layout_marginTop="4dp"
-                android:src="@color/colorNotFound"
+                android:src="@color/colorLateTask"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/tv_tuesday" />
@@ -167,7 +168,7 @@
                 android:id="@+id/tv_wednesday"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Qua"
+                android:text="@string/quarta"
                 android:textColor="@color/colorText"
                 android:textSize="14dp"
                 app:layout_constraintEnd_toEndOf="parent"
@@ -178,7 +179,7 @@
                 android:layout_width="20dp"
                 android:layout_height="20dp"
                 android:layout_marginTop="4dp"
-                android:src="@color/colorNotFound"
+                android:src="@color/colorNoTaskDay"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/tv_wednesday" />
@@ -198,7 +199,7 @@
                 android:id="@+id/tv_thursday"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Qui"
+                android:text="@string/quinta"
                 android:textColor="@color/colorText"
                 android:textSize="14dp"
                 app:layout_constraintEnd_toEndOf="parent"
@@ -209,7 +210,7 @@
                 android:layout_width="20dp"
                 android:layout_height="20dp"
                 android:layout_marginTop="4dp"
-                android:src="@color/colorNotFound"
+                android:src="@color/colorNoTaskDay"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/tv_thursday" />
@@ -229,7 +230,7 @@
                 android:id="@+id/tv_friday"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Sex"
+                android:text="@string/sexta"
                 android:textColor="@color/colorText"
                 android:textSize="14dp"
                 app:layout_constraintEnd_toEndOf="parent"
@@ -240,7 +241,7 @@
                 android:layout_width="20dp"
                 android:layout_height="20dp"
                 android:layout_marginTop="4dp"
-                android:src="@color/colorNotFound"
+                android:src="@color/colorNoTaskDay"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/tv_friday" />
@@ -260,7 +261,7 @@
                 android:id="@+id/tv_saturday"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Sáb"
+                android:text="@string/sabado"
                 android:textColor="@color/colorText"
                 android:textSize="14dp"
                 app:layout_constraintEnd_toEndOf="parent"
@@ -271,7 +272,7 @@
                 android:layout_width="20dp"
                 android:layout_height="20dp"
                 android:layout_marginTop="4dp"
-                android:src="@color/colorNotFound"
+                android:src="@color/colorNoTaskDay"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/tv_saturday" />

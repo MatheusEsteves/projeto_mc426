@@ -2,4 +2,12 @@
     <string name="app_name">Organiza Rep</string>
     <string name="network_not_connected">Sem conexão com Internet</string>
     <string name="home_activity_name">Home</string>
+
+    <string name="domingo">Dom</string>
+    <string name="segunda">Seg</string>
+    <string name="terca">Ter</string>
+    <string name="quarta">Qua</string>
+    <string name="quinta">Qui</string>
+    <string name="sexta">Sex</string>
+    <string name="sabado">Sáb</string>
 </resources>

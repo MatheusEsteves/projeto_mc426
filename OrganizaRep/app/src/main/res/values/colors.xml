@@ -4,6 +4,11 @@
     <color name="colorPrimaryDark">#303F9F</color>
     <color name="colorAccent">#FF4081</color>
     <color name="colorNotFound">#ababab</color>
+
     <color name="colorText">#585858</color>
+
+    <color name="colorNoTaskDay">#EEEEEE</color>
+    <color name="colorDoneTask">#3A9063</color>
+    <color name="colorLateTask">#EB5757</color>
 
 </resources>

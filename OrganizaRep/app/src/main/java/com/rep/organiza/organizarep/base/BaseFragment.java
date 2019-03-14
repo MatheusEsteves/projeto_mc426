@@ -5,7 +5,7 @@ import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 
-import com.rep.organiza.organizarep.Listener.OnChangeFragmentListener;
+import com.rep.organiza.organizarep.listener.OnChangeFragmentListener;
 
 public class BaseFragment extends Fragment {
 
