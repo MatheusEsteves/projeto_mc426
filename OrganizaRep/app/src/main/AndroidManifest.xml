@@ -17,6 +17,19 @@
             android:label="@string/home_activity_name"
             android:screenOrientation="portrait"
             android:theme="@style/AppTheme">
+            <!--<intent-filter>-->
+                <!--<action android:name="android.intent.action.MAIN" />-->
+                <!--<category android:name="android.intent.category.LAUNCHER" />-->
+            <!--</intent-filter>-->
+        </activity>
+
+        <activity
+            android:name=".task.view.TaskActivity"
+            android:configChanges="orientation"
+            android:exported="true"
+            android:label="@string/task_activity_name"
+            android:screenOrientation="portrait"
+            android:theme="@style/AppTheme">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.LAUNCHER" />

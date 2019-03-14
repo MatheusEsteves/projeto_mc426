@@ -2,6 +2,7 @@
     <string name="app_name">Organiza Rep</string>
     <string name="network_not_connected">Sem conexão com Internet</string>
     <string name="home_activity_name">Home</string>
+    <string name="task_activity_name">Tarefas</string>
 
     <string name="domingo">Dom</string>
     <string name="segunda">Seg</string>

@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="colorPrimary">#3F51B5</color>
-    <color name="colorPrimaryDark">#303F9F</color>
-    <color name="colorAccent">#FF4081</color>
+    <color name="colorPrimary">#3A9063</color>
+    <color name="colorPrimaryDark">#1c613d</color>
+
     <color name="colorNotFound">#ababab</color>
 
     <color name="colorText">#585858</color>
 
-    <color name="colorNoTaskDay">#EEEEEE</color>
+    <color name="colorNotTaskDay">#EEEEEE</color>
     <color name="colorDoneTask">#3A9063</color>
     <color name="colorLateTask">#EB5757</color>
 
