@@ -7,7 +7,9 @@
     android:orientation="vertical"
     android:padding="15dp"
     android:background="@drawable/layout_round_corner_task"
-    android:id="@+id/container_task">
+    android:id="@+id/container_task"
+    android:layout_marginTop="@dimen/default_margin"
+    android:layout_marginBottom="5dp">
 
     <TextView
         android:id="@+id/tv_task_title"

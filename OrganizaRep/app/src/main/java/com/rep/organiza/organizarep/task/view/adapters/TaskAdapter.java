@@ -46,8 +46,8 @@ public class TaskAdapter extends RecyclerView.Adapter<TaskAdapter.TaskViewHolder
 
         String taskTitle = task.getTitle();
         String taskDescription = task.getDescription();
-        String userName = task.getUserName();
-        String userImgPath = task.getUserImagePath();
+        String userName = task.getUser().getUserName();
+        String userImgPath = task.getUser().getUserImagePath();
         List<WeekDay> weekDays = task.getWeekDays();
 
         holder.tvTaskTitle.setText(taskTitle);

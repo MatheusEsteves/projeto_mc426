@@ -6,7 +6,7 @@ import android.support.annotation.NonNull;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import com.rep.organiza.organizarep.BuildConfig;
-import com.rep.organiza.organizarep.model.Test;
+import com.rep.organiza.organizarep.model.User;
 
 import java.util.concurrent.TimeUnit;
 
@@ -25,7 +25,7 @@ public class OrganizaRepAPI {
     public interface OrganizaRepService {
 
         @GET("api/test")
-        Call<Test> test(@Header("Test") String testName);
+        Call<User> test(@Header("Test") String testName);
 
     }
 

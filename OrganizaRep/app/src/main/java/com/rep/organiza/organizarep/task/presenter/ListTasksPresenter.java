@@ -1,8 +1,8 @@
 package com.rep.organiza.organizarep.task.presenter;
 
-import com.rep.organiza.organizarep.base.BaseFragment;
 import com.rep.organiza.organizarep.base.BasePresenter;
 import com.rep.organiza.organizarep.model.Task;
+import com.rep.organiza.organizarep.model.User;
 import com.rep.organiza.organizarep.task.model.Status;
 import com.rep.organiza.organizarep.task.model.WeekDay;
 import com.rep.organiza.organizarep.task.view.ListTasksFragment;
@@ -16,6 +16,9 @@ public class ListTasksPresenter extends BasePresenter {
 
     public ListTasksPresenter(ListTasksFragment fragment){
         this.fragment = fragment;
+        list = new ArrayList<Task>();
+
+        for(int i=1; i<10; i++)
         mockData();
     }
 
@@ -37,9 +40,9 @@ public class ListTasksPresenter extends BasePresenter {
         WeekDay sat = new WeekDay("Sab", Status.notTaskDay);
         days.add(sat);
 
-        Task task = new Task("Tirar o Lixo", "Retirar o lixo do banheiro", "", "Lulinha", days);
+        User user  = new User("Lulinha", "");
+        Task task = new Task("Tirar o Lixo", "Retirar o lixo do banheiro", user , days);
 
-        list = new ArrayList<Task>();
         list.add(task);
     }
 
