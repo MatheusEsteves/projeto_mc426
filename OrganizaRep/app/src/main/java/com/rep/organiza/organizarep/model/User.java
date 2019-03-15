@@ -4,7 +4,6 @@ public class User {
     private String userImagePath;
     private String userName;
 
-
     public String getUserName() {
         return userName;
     }

@@ -117,7 +117,7 @@ public class TaskAdapter extends RecyclerView.Adapter<TaskAdapter.TaskViewHolder
         }
     }
 
-    public class TaskViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
+    public class TaskViewHolder extends RecyclerView.ViewHolder{
 
         ConstraintLayout layout;
         TextView tvTaskTitle;
@@ -154,7 +154,6 @@ public class TaskAdapter extends RecyclerView.Adapter<TaskAdapter.TaskViewHolder
             cvFriday = itemView.findViewById(R.id.cv_friday_circle);
             cvSaturday = itemView.findViewById(R.id.cv_saturday_circle);
 
-            layout.setOnClickListener(this);
             setAlertOnclick();
             setExchangeOnclick();
         }
@@ -175,10 +174,6 @@ public class TaskAdapter extends RecyclerView.Adapter<TaskAdapter.TaskViewHolder
                     Toast.makeText(mContext, "Atividade trocada com sucesso!", Toast.LENGTH_LONG).show();
                 }
             });
-        }
-
-        @Override
-        public void onClick(View v) {
         }
     }
 }

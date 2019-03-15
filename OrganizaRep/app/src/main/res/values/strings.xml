@@ -4,6 +4,9 @@
     <string name="home_activity_name">Home</string>
     <string name="task_activity_name">Tarefas</string>
 
+
+    <string name="add_toolbar">Adicionar</string>
+
     <string name="domingo">Dom</string>
     <string name="segunda">Seg</string>
     <string name="terca">Ter</string>
@@ -12,3 +15,4 @@
     <string name="sexta">Sex</string>
     <string name="sabado">Sáb</string>
 </resources>
+

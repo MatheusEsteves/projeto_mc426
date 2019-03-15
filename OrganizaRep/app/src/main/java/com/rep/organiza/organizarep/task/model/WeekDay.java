@@ -1,9 +1,5 @@
 package com.rep.organiza.organizarep.task.model;
 
-/**
- * Created by gabriel on 14/03/19.
- */
-
 public class WeekDay {
     private String name;
     private Status status;
