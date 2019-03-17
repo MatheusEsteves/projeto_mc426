@@ -49,7 +49,8 @@ public class TaskActivity extends BaseActivity {
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()) {
             case R.id.add_action:
-                Toast.makeText(this, "Adicionando tarefa", Toast.LENGTH_SHORT).show();
+                FragmentManager.replaceFragment(R.id.container_task, new CreateTaskFragment(), "f1",
+                        true, getSupportFragmentManager());
                 return true;
 
             default:
