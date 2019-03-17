@@ -11,4 +11,6 @@
     <color name="colorDoneTask">#3A9063</color>
     <color name="colorLateTask">#EB5757</color>
 
+    <color name="colorMemberSelected">#DCDCDC</color>
+
 </resources>
