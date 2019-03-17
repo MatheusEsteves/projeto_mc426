@@ -14,5 +14,10 @@
     <string name="quinta">Qui</string>
     <string name="sexta">Sex</string>
     <string name="sabado">Sáb</string>
+
+    <string name="new_task_title">Título</string>
+    <string name="new_task_description">Descrição</string>
+    <string name="new_task_period">Período</string>
+    <string name="next">Próximo</string>
 </resources>
 
