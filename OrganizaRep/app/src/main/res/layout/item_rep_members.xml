@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="100dp"
+    android:orientation="vertical"
+    android:padding="15dp"
+    android:background="@drawable/layout_round_corner_task"
+    android:layout_marginTop="@dimen/default_margin"
+    android:layout_marginBottom="5dp">
+
+
+    <de.hdodenhof.circleimageview.CircleImageView
+        android:id="@+id/cv_user_image"
+        android:layout_width="70dp"
+        android:layout_height="70dp"
+        android:layout_marginTop="8dp"
+        android:src="@color/colorNotFound"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tv_task_title" />
+
+    <TextView
+        android:id="@+id/tv_user_name"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="16dp"
+        android:gravity="center_vertical"
+        android:maxWidth="200dp"
+        android:minHeight="70dp"
+        android:text="Lulinha pistola"
+        android:textColor="@color/colorText"
+        android:textSize="18dp"
+        app:layout_constraintEnd_toStartOf="@+id/iv_exchange"
+        app:layout_constraintStart_toEndOf="@+id/cv_user_image"
+        app:layout_constraintTop_toBottomOf="@+id/tv_task_title"/>
+
+
+</android.support.constraint.ConstraintLayout>
