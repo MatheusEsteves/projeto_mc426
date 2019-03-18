@@ -3,9 +3,13 @@ package com.rep.organiza.organizarep.task.view.adapters;
 import android.content.Context;
 import android.graphics.PorterDuff;
 import android.graphics.drawable.Drawable;
+import android.opengl.Visibility;
+import android.os.Bundle;
 import android.support.constraint.ConstraintLayout;
+import android.support.v4.app.FragmentActivity;
 import android.support.v4.content.ContextCompat;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -14,11 +18,17 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.rep.organiza.organizarep.R;
+import com.rep.organiza.organizarep.Util.FragmentManager;
+import com.rep.organiza.organizarep.base.BaseActivity;
+import com.rep.organiza.organizarep.mock.UserAuthenticator;
 import com.rep.organiza.organizarep.model.Task;
 import com.rep.organiza.organizarep.task.model.Status;
 import com.rep.organiza.organizarep.task.model.WeekDay;
+import com.rep.organiza.organizarep.task.view.ChangeTaskFragment;
+import com.rep.organiza.organizarep.task.view.TaskActivity;
 import com.squareup.picasso.Picasso;
 
+import java.lang.reflect.Array;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -26,18 +36,26 @@ import de.hdodenhof.circleimageview.CircleImageView;
 
 public class TaskAdapter extends RecyclerView.Adapter<TaskAdapter.TaskViewHolder> {
 
-    private List<Task> listTask;
+    private ArrayList<Task> listTask;
     private Context mContext;
+    private TaskActivity taskActivity;
 
-    public TaskAdapter(List<Task> list, Context context) {
+    public TaskAdapter(ArrayList<Task> list, Context context, TaskActivity taskActivity) {
         this.listTask = list;
-        mContext = context;
+        this.mContext = context;
+        this.taskActivity = taskActivity;
     }
 
     @Override
     public TaskViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         View v = LayoutInflater.from(parent.getContext()).inflate(R.layout.item_task, parent, false);
         return new TaskViewHolder(v);
+    }
+
+    private void costumizeAuthenticatedUserTask(TaskViewHolder holder, Task task){
+        holder.ivAlert.setVisibility(View.GONE);
+        holder.ivExchange.setVisibility(View.GONE);
+        setImage(holder.cvUserImage, R.drawable.authenticated_user_img);
     }
 
     @Override
@@ -53,9 +71,14 @@ public class TaskAdapter extends RecyclerView.Adapter<TaskAdapter.TaskViewHolder
         holder.tvTaskTitle.setText(taskTitle);
         holder.tvTaskDescription.setText(taskDescription);
         holder.tvUserName.setText(userName);
-
-        setImage(holder.cvUserImage, userImgPath);
         feedWeekDays(weekDays, holder);
+
+        if (task.getUser().equals(UserAuthenticator.getAuthenticatedUser())){
+            costumizeAuthenticatedUserTask(holder,task);
+        } else {
+            holder.setExchangeOnclick(task);
+            setImage(holder.cvUserImage, R.drawable.user_img);
+        }
     }
 
     private void feedWeekDays(List<WeekDay> weekDays, TaskViewHolder holder) {
@@ -91,9 +114,9 @@ public class TaskAdapter extends RecyclerView.Adapter<TaskAdapter.TaskViewHolder
         return list;
     }
 
-    private void setImage(ImageView img, String imgPath) {
+    private void setImage(ImageView img, int id) {
         Picasso.with(mContext)
-                .load(R.drawable.user_img) //TODO set this property to load the correct image
+                .load(id) //TODO set this property to load the correct image
                 .placeholder(R.color.colorNotFound)
                 .into(img);
     }
@@ -143,8 +166,6 @@ public class TaskAdapter extends RecyclerView.Adapter<TaskAdapter.TaskViewHolder
             tvTaskDescription = itemView.findViewById(R.id.tv_task_description);
             tvUserName = itemView.findViewById(R.id.tv_user_name);
             cvUserImage = itemView.findViewById(R.id.cv_user_image);
-            ivAlert = itemView.findViewById(R.id.iv_alert);
-            ivExchange = itemView.findViewById(R.id.iv_exchange);
 
             cvSunday = itemView.findViewById(R.id.cv_sunday_circle);
             cvMonday = itemView.findViewById(R.id.cv_monday_circle);
@@ -154,11 +175,12 @@ public class TaskAdapter extends RecyclerView.Adapter<TaskAdapter.TaskViewHolder
             cvFriday = itemView.findViewById(R.id.cv_friday_circle);
             cvSaturday = itemView.findViewById(R.id.cv_saturday_circle);
 
+            ivAlert = itemView.findViewById(R.id.iv_alert);
+            ivExchange = itemView.findViewById(R.id.iv_exchange);
             setAlertOnclick();
-            setExchangeOnclick();
         }
 
-        private void setAlertOnclick(){
+        public void setAlertOnclick(){
             ivAlert.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
@@ -167,11 +189,22 @@ public class TaskAdapter extends RecyclerView.Adapter<TaskAdapter.TaskViewHolder
             });
         }
 
-        private void setExchangeOnclick(){
+        public void setExchangeOnclick(Task taskOtherUser){
             ivExchange.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    Toast.makeText(mContext, "Atividade trocada com sucesso!", Toast.LENGTH_LONG).show();
+                    String changeTaskFragmentIdentification = "frag_1";
+
+                    Bundle bundle = new Bundle();
+                    bundle.putSerializable("taskOtherUser", taskOtherUser);
+                    bundle.putSerializable("listTask", listTask);
+
+                    ChangeTaskFragment changeTaskFragment = new ChangeTaskFragment();
+                    changeTaskFragment.setArguments(bundle);
+
+                    FragmentManager.replaceFragment(R.id.container_change_task,
+                            changeTaskFragment, changeTaskFragmentIdentification, false,
+                            taskActivity.getSupportFragmentManager());
                 }
             });
         }

@@ -1,0 +1,144 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:id="@+id/constraint_layout_change_task"
+    android:background="@color/colorBackgroundAlert">
+
+    <android.support.constraint.ConstraintLayout
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        android:layout_width="300dp"
+        android:layout_height="380dp"
+        android:layout_marginLeft="29dp"
+        android:layout_marginTop="90dp"
+        android:clipChildren="false"
+        android:id="@+id/constraint_layout_change_task_modal"
+        android:background="@drawable/layout_round_corner_task"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <TextView
+            android:id="@+id/tv_change_task_title"
+            android:layout_width="250dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:layout_marginLeft="25dp"
+            android:text="Solicitar troca"
+            android:textColor="@color/colorText"
+            android:textSize="24dp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"/>
+
+        <TextView
+            android:id="@+id/tv_change_task_text"
+            android:layout_width="250dp"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="25dp"
+            android:textSize="18dp"
+            android:text="Você deseja trocar de tarefas com Eduardo ?"
+            android:textColor="@color/colorText"
+            app:layout_constraintTop_toBottomOf="@id/tv_change_task_title"
+            app:layout_constraintStart_toStartOf="parent"/>
+
+        <TextView
+            android:id="@+id/tv_change_task_date"
+            android:layout_width="250dp"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="25dp"
+            android:textSize="14dp"
+            android:text="Data: 08/09/2018"
+            android:textColor="@color/colorText"
+            app:layout_constraintTop_toBottomOf="@id/tv_change_task_text"
+            app:layout_constraintStart_toStartOf="parent"/>
+
+        <LinearLayout
+            android:id="@+id/linear_layout_authenticated_user"
+            android:layout_width="250dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:layout_marginLeft="25dp"
+            app:layout_constraintTop_toBottomOf="@id/tv_change_task_date"
+            app:layout_constraintStart_toStartOf="parent">
+
+            <de.hdodenhof.circleimageview.CircleImageView
+                android:id="@+id/cv_change_task_authenticated_user"
+                android:layout_width="70dp"
+                android:layout_height="70dp"
+                android:src="@color/colorText"/>
+
+            <TextView
+                android:id="@+id/tv_task_to_change_authenticated_user"
+                android:layout_width="130dp"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="20dp"
+                android:textSize="14dp"
+                android:textColor="@color/colorText"
+                android:textStyle="bold"
+                android:text="Limpar Banheiro"
+                android:layout_marginTop="20dp"/>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/linear_layout_other_user"
+            android:layout_width="250dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:layout_marginLeft="25dp"
+            app:layout_constraintTop_toBottomOf="@id/linear_layout_authenticated_user"
+            app:layout_constraintStart_toStartOf="parent">
+
+            <de.hdodenhof.circleimageview.CircleImageView
+                android:id="@+id/cv_change_task_other_user"
+                android:layout_width="70dp"
+                android:layout_height="70dp"
+                android:src="@color/colorText"/>
+
+            <TextView
+                android:id="@+id/tv_task_to_change_other_user"
+                android:layout_width="130dp"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="20dp"
+                android:textSize="14dp"
+                android:textColor="@color/colorText"
+                android:textStyle="bold"
+                android:text="Limpar Garagem"
+                android:layout_marginTop="20dp"/>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/linear_layout_change_task_actions"
+            android:layout_width="180dp"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="55dp"
+            android:layout_marginTop="26dp"
+            app:layout_constraintTop_toBottomOf="@id/linear_layout_other_user"
+            app:layout_constraintStart_toStartOf="parent">
+
+            <TextView
+                android:id="@+id/tv_change_task_action"
+                android:layout_width="wrap_content"
+                android:layout_height="30dp"
+                android:layout_marginLeft="22dp"
+                android:background="@color/cardview_light_background"
+                android:text="Trocar"
+                android:textSize="18dp"
+                android:textColor="@color/colorConfirmAlert"/>
+            <TextView
+                android:id="@+id/tv_cancel_change_task_action"
+                android:layout_width="wrap_content"
+                android:layout_height="30dp"
+                android:layout_marginLeft="25dp"
+                android:background="@color/cardview_light_background"
+                android:text="Cancelar"
+                android:textSize="18dp"
+                android:textAllCaps="false"
+                android:textColor="@color/colorCancelAlert"/>
+        </LinearLayout>
+
+    </android.support.constraint.ConstraintLayout>
+</android.support.constraint.ConstraintLayout>

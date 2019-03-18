@@ -1,6 +1,8 @@
 package com.rep.organiza.organizarep.task.model;
 
-public class WeekDay {
+import java.io.Serializable;
+
+public class WeekDay implements Serializable {
     private String name;
     private Status status;
 

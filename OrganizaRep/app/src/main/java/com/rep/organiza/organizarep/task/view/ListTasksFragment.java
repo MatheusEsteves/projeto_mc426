@@ -15,6 +15,8 @@ import com.rep.organiza.organizarep.model.Task;
 import com.rep.organiza.organizarep.task.presenter.ListTasksPresenter;
 import com.rep.organiza.organizarep.task.view.adapters.TaskAdapter;
 
+import java.lang.reflect.Array;
+import java.util.ArrayList;
 import java.util.List;
 
 import butterknife.Bind;
@@ -44,9 +46,9 @@ public class ListTasksFragment extends BaseFragment{
         return view;
     }
 
-    public void showTasks(List<Task> tasks) {
+    public void showTasks(ArrayList<Task> tasks) {
         if (tasks != null && !tasks.isEmpty()) {
-            TaskAdapter adapter = new TaskAdapter(tasks, this.getContext());
+            TaskAdapter adapter = new TaskAdapter(tasks, this.getContext(), activity);
 
             LinearLayoutManager layoutManager = new LinearLayoutManager(getActivity());
             layoutManager.setOrientation(LinearLayoutManager.VERTICAL);

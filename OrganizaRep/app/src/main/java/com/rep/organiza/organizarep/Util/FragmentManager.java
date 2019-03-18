@@ -20,6 +20,12 @@ public class FragmentManager {
         transaction.commit();
     }
 
+    public static void removeFragment(Fragment fragment, android.support.v4.app.FragmentManager fragmentManager){
+        FragmentTransaction transaction = fragmentManager.beginTransaction();
+        transaction.remove(fragment);
+        transaction.commit();
+    }
+
     public static int getBackStackCount(android.support.v4.app.FragmentManager fragmentManager) {
         return fragmentManager.getBackStackEntryCount();
     }
