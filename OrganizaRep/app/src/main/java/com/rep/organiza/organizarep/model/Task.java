@@ -2,9 +2,10 @@ package com.rep.organiza.organizarep.model;
 
 import com.rep.organiza.organizarep.task.model.WeekDay;
 
+import java.io.Serializable;
 import java.util.List;
 
-public class Task {
+public class Task implements Serializable {
     private String title;
     private String Description;
     private User user;

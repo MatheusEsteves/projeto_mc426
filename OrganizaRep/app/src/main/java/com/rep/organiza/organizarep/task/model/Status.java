@@ -1,6 +1,8 @@
 package com.rep.organiza.organizarep.task.model;
 
-public enum Status {
+import java.io.Serializable;
+
+public enum Status implements Serializable {
     done,
     late,
     exchanged,

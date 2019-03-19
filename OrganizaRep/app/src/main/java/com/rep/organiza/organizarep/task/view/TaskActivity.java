@@ -2,6 +2,7 @@ package com.rep.organiza.organizarep.task.view;
 
 import android.os.Bundle;
 import android.support.annotation.Nullable;
+import android.support.constraint.ConstraintLayout;
 import android.support.v4.content.ContextCompat;
 import android.view.Menu;
 import android.view.MenuInflater;
@@ -21,6 +22,9 @@ public class TaskActivity extends BaseActivity {
     @Bind(R.id.container_task)
     FrameLayout containerFragment;
 
+    @Bind(R.id.container_change_task)
+    FrameLayout changeTaskFragment;
+
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -32,7 +36,6 @@ public class TaskActivity extends BaseActivity {
 
     protected void initFragment() {
         String initialFrag = "frag_0";
-
         ListTasksFragment listTasksFragment = new ListTasksFragment();
         FragmentManager.replaceFragment(R.id.container_task, listTasksFragment, initialFrag,
                 false, getSupportFragmentManager());
