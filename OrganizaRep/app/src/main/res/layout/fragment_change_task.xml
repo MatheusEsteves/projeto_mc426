@@ -16,7 +16,7 @@
         android:layout_marginTop="90dp"
         android:clipChildren="false"
         android:id="@+id/constraint_layout_change_task_modal"
-        android:background="@drawable/layout_round_corner_task"
+        android:background="@drawable/layout_round_corner"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
 

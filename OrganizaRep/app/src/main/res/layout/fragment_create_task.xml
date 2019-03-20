@@ -52,11 +52,10 @@
 
     <Button
         android:id="@+id/bt_next"
-
         android:layout_width="@dimen/button_width"
         android:layout_height="wrap_content"
         android:layout_marginTop="65dp"
-        android:background="@color/colorPrimary"
+        android:background="@drawable/layout_round_corner_button"
         android:text="@string/next"
         android:textColor="@android:color/background_light"
         app:layout_constraintEnd_toEndOf="parent"
