@@ -1,17 +1,16 @@
 package com.rep.organiza.organizarep.task.view;
 
-import android.content.Context;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
-import android.widget.Toast;
 
 import com.rep.organiza.organizarep.R;
 import com.rep.organiza.organizarep.Util.FragmentManager;
 import com.rep.organiza.organizarep.base.BaseFragment;
+
 import butterknife.ButterKnife;
 
 public class CreateTaskFragment extends BaseFragment{
