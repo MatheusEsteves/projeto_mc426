@@ -135,6 +135,9 @@ public class TaskAdapter extends RecyclerView.Adapter<TaskAdapter.TaskViewHolder
             case late:
                 return ContextCompat.getColor(mContext, R.color.colorLateTask);
 
+            case toDo:
+                return ContextCompat.getColor(mContext, R.color.colorToDoTask);
+
             default:
                 return ContextCompat.getColor(mContext, R.color.colorNotTaskDay);
         }

@@ -6,5 +6,6 @@ public enum Status implements Serializable {
     done,
     late,
     exchanged,
+    toDo,
     notTaskDay
 }
