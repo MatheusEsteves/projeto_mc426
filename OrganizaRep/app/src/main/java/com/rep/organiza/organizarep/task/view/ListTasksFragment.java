@@ -49,7 +49,6 @@ public class ListTasksFragment extends BaseFragment{
     public void showTasks(ArrayList<Task> tasks) {
         if (tasks != null && !tasks.isEmpty()) {
             TaskAdapter adapter = new TaskAdapter(tasks, this.getContext(), activity);
-
             LinearLayoutManager layoutManager = new LinearLayoutManager(getActivity());
             layoutManager.setOrientation(LinearLayoutManager.VERTICAL);
             recyclerView.setLayoutManager(layoutManager);

@@ -3,8 +3,12 @@ package com.rep.organiza.organizarep.task.model;
 import java.io.Serializable;
 
 public class WeekDay implements Serializable {
-    private String name;
+    protected String name;
     private Status status;
+
+    public WeekDay() {
+        this.name = "";
+    }
 
     public WeekDay(String name, Status status) {
         this.name = name;
