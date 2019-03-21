@@ -6,10 +6,6 @@ public class WeekDay implements Serializable {
     protected String name;
     private Status status;
 
-    public WeekDay() {
-        this.name = "";
-    }
-
     public WeekDay(String name, Status status) {
         this.name = name;
         this.status = status;

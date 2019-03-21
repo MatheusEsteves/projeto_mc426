@@ -4,8 +4,7 @@ public class WeekDaySelectable extends WeekDay {
     private boolean isSelected;
 
     public WeekDaySelectable(String name, boolean isSelected) {
-        super();
-        this.name = name;
+        super(name, Status.notTaskDay);
         this.isSelected = isSelected;
     }
 
@@ -14,6 +13,12 @@ public class WeekDaySelectable extends WeekDay {
     }
 
     public void setSelected(boolean selected) {
+        if(selected){
+            this.setStatus(Status.toDo);
+        }else{
+            this.setStatus(Status.notTaskDay);
+        }
+
         isSelected = selected;
     }
 }
