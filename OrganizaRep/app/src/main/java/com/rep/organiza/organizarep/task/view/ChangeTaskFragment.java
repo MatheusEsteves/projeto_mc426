@@ -31,7 +31,6 @@ public class ChangeTaskFragment extends BaseFragment {
 
     private TaskActivity taskActivity;
     private Task taskOtherUser;
-    private List<Task> listTask;
 
     @Bind(R.id.tv_change_task_text)
     TextView tvChangeTaskText;
@@ -64,7 +63,6 @@ public class ChangeTaskFragment extends BaseFragment {
         Bundle arguments = this.getArguments();
         if (arguments != null){
             this.taskOtherUser = (Task) arguments.getSerializable("taskOtherUser");
-            this.listTask = (ArrayList<Task>) arguments.getSerializable("listTask");
         }
     }
 

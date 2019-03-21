@@ -56,7 +56,7 @@ public class ListTasksPresenter extends BasePresenter {
 
         WeekDay sun = new WeekDay("Dom", Status.done);
         days.add(sun);
-        WeekDay mon = new WeekDay("Seg", Status.done);
+        WeekDay mon = new WeekDay("Seg", Status.toDo);
         days.add(mon);
         WeekDay tue = new WeekDay("Ter", Status.exchanged);
         days.add(tue);
