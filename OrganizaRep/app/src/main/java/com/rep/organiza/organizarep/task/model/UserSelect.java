@@ -4,17 +4,18 @@ import com.rep.organiza.organizarep.model.User;
 
 public class UserSelect extends User {
 
-    private boolean isSelested;
+    private boolean isSelected;
 
-    public UserSelect(String userName, String userImagePath, String userEmail) {
+    public UserSelect(String userName, String userImagePath, String userEmail, boolean isSelected) {
         super(userName, userImagePath, userEmail);
+        this.isSelected = isSelected;
     }
 
-    public boolean isSelested() {
-        return isSelested;
+    public boolean isSelected() {
+        return isSelected;
     }
 
-    public void setSelested(boolean selested) {
-        isSelested = selested;
+    public void setSelected(boolean selected) {
+        isSelected = selected;
     }
 }

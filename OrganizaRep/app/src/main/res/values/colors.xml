@@ -17,4 +17,6 @@
     <color name="colorBackgroundAlert">#66808080</color>
 
     <color name="colorMemberSelected">#DCDCDC</color>
+    <color name="colorListItemDefault">#FFFFFF</color>
+    <color name="colorListItemBorderDefault">#D4D4D4</color>
 </resources>
