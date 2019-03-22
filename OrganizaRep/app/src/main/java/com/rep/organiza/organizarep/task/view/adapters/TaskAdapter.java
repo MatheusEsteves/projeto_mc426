@@ -24,6 +24,7 @@ import com.rep.organiza.organizarep.mock.UserAuthenticator;
 import com.rep.organiza.organizarep.model.Task;
 import com.rep.organiza.organizarep.task.model.Status;
 import com.rep.organiza.organizarep.task.model.WeekDay;
+import com.rep.organiza.organizarep.task.view.AlertTaskFragment;
 import com.rep.organiza.organizarep.task.view.ChangeTaskFragment;
 import com.rep.organiza.organizarep.task.view.TaskActivity;
 import com.squareup.picasso.Picasso;
@@ -187,7 +188,15 @@ public class TaskAdapter extends RecyclerView.Adapter<TaskAdapter.TaskViewHolder
             ivAlert.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    Toast.makeText(mContext, "Lembrete enviado!", Toast.LENGTH_LONG).show();
+                    String alertTaskFragmentIdentification = "frag_2";
+
+                    Bundle bundle = new Bundle();
+                    AlertTaskFragment alertTaskFragment = new AlertTaskFragment();
+                    alertTaskFragment.setArguments(bundle);
+
+                    FragmentManager.replaceFragment(R.id.container_alert_task,
+                            alertTaskFragment, alertTaskFragmentIdentification, false,
+                            taskActivity.getSupportFragmentManager());
                 }
             });
         }
