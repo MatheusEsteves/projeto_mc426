@@ -9,6 +9,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.rep.organiza.organizarep.Constants;
 import com.rep.organiza.organizarep.R;
 import com.rep.organiza.organizarep.Util.FragmentManager;
 import com.rep.organiza.organizarep.base.BaseFragment;
@@ -62,7 +63,7 @@ public class ChangeTaskFragment extends BaseFragment {
 
         Bundle arguments = this.getArguments();
         if (arguments != null){
-            this.taskOtherUser = (Task) arguments.getSerializable("taskOtherUser");
+            this.taskOtherUser = (Task) arguments.getSerializable(Constants.DATATRANSFERING_FROM_TASKITEM_TO_CHANGETASK);
         }
     }
 

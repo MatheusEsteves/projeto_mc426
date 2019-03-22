@@ -1,4 +1,4 @@
-package com.rep.organiza.organizarep.task.listeners;
+package com.rep.organiza.organizarep.listener;
 
 import com.rep.organiza.organizarep.task.model.SelectableUser;
 

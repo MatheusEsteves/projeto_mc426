@@ -13,8 +13,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.rep.organiza.organizarep.R;
-import com.rep.organiza.organizarep.model.User;
-import com.rep.organiza.organizarep.task.listeners.OnItemSelectedListener;
+import com.rep.organiza.organizarep.listener.OnItemSelectedListener;
 import com.rep.organiza.organizarep.task.model.SelectableUser;
 import com.squareup.picasso.Picasso;
 
@@ -23,9 +22,6 @@ import java.util.List;
 import de.hdodenhof.circleimageview.CircleImageView;
 
 public class UserAdapter extends RecyclerView.Adapter implements OnItemSelectedListener {
-    private static final boolean SELECTED = true;
-    private static final boolean UNSELECTED = false;
-
     private List<SelectableUser> listUser;
     private Context mContext;
 
@@ -42,19 +38,15 @@ public class UserAdapter extends RecyclerView.Adapter implements OnItemSelectedL
     }
 
     @Override
-    public void onBindViewHolder(RecyclerView.ViewHolder holder, int position) {
-        bindUserViewHolder((UserViewHolder) holder, position);
-    }
-
-    private void bindUserViewHolder(UserViewHolder holder, int position) {
-        UserViewHolder userViewHolder = holder;
+    public void onBindViewHolder(RecyclerView.ViewHolder viewHolder, int position) {
+        UserViewHolder holder = (UserViewHolder)viewHolder;
         SelectableUser selectableUser = listUser.get(position);
 
         String userName = selectableUser.getUserName();
         String userImgPath = selectableUser.getUserImagePath();
 
-        userViewHolder.tvUserName.setText(userName);
-        setImage(userViewHolder.cvUserImage, userImgPath);
+        holder.tvUserName.setText(userName);
+        setImage(holder.cvUserImage, userImgPath);
         holder.selectableUser = selectableUser;
         holder.setChecked(holder.selectableUser.isSelected());
     }
@@ -109,9 +101,9 @@ public class UserAdapter extends RecyclerView.Adapter implements OnItemSelectedL
                 @Override
                 public void onClick(View view) {
                    if(ivCheckCircle.getVisibility() == View.VISIBLE){
-                       setChecked(UNSELECTED);
+                       setChecked(false);
                    }else{
-                       setChecked(SELECTED);
+                       setChecked(true);
                    }
 
                    itemSelectedListener.onItemSelected(selectableUser);

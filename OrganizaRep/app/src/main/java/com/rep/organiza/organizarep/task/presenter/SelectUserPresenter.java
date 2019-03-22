@@ -1,6 +1,7 @@
 package com.rep.organiza.organizarep.task.presenter;
 
 import com.rep.organiza.organizarep.base.BasePresenter;
+import com.rep.organiza.organizarep.model.User;
 import com.rep.organiza.organizarep.task.model.SelectableUser;
 import com.rep.organiza.organizarep.task.view.SelectUserFragment;
 
@@ -26,5 +27,15 @@ public class SelectUserPresenter extends BasePresenter {
 
     public void loadUser(){
         fragment.showUsers(list);
+    }
+
+    public User getSelectedUser(){
+        for(SelectableUser user: list){
+            if(user.isSelected()){
+                return user;
+            }
+        }
+
+        return null;
     }
 }

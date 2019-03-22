@@ -17,6 +17,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.rep.organiza.organizarep.Constants;
 import com.rep.organiza.organizarep.R;
 import com.rep.organiza.organizarep.Util.FragmentManager;
 import com.rep.organiza.organizarep.base.BaseActivity;
@@ -199,8 +200,7 @@ public class TaskAdapter extends RecyclerView.Adapter<TaskAdapter.TaskViewHolder
                     String changeTaskFragmentIdentification = "frag_1";
 
                     Bundle bundle = new Bundle();
-                    bundle.putSerializable("taskOtherUser", taskOtherUser);
-                    bundle.putSerializable("listTask", listTask);
+                    bundle.putSerializable(Constants.DATATRANSFERING_FROM_TASKITEM_TO_CHANGETASK, taskOtherUser);
 
                     ChangeTaskFragment changeTaskFragment = new ChangeTaskFragment();
                     changeTaskFragment.setArguments(bundle);

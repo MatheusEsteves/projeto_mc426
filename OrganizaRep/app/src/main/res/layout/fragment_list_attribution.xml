@@ -35,7 +35,7 @@
 
 
     <Button
-        android:id="@+id/bt_create_task"
+        android:id="@+id/btn_create_task"
         android:layout_width="220dp"
         android:layout_height="wrap_content"
         android:layout_gravity="center"

@@ -1,6 +1,7 @@
 package com.rep.organiza.organizarep.task.presenter;
 
 import com.rep.organiza.organizarep.base.BasePresenter;
+import com.rep.organiza.organizarep.mock.MockTasks;
 import com.rep.organiza.organizarep.mock.UserAuthenticator;
 import com.rep.organiza.organizarep.model.Task;
 import com.rep.organiza.organizarep.model.User;
@@ -8,17 +9,14 @@ import com.rep.organiza.organizarep.task.model.Status;
 import com.rep.organiza.organizarep.task.model.WeekDay;
 import com.rep.organiza.organizarep.task.view.ListTasksFragment;
 
-import java.lang.reflect.Array;
 import java.util.ArrayList;
 import java.util.List;
 
 public class ListTasksPresenter extends BasePresenter {
     private ListTasksFragment fragment;
-    private ArrayList<Task> tasks;
 
     public ListTasksPresenter(ListTasksFragment fragment){
         this.fragment = fragment;
-        this.tasks = new ArrayList<Task>();
 
         User user  = new User("Matheus - Myself", "../authenticated_user_img.jpg", "matheusesteveszanoto@gmail.com");
         mockTasksAuthenticatedUser(user);
@@ -48,7 +46,7 @@ public class ListTasksPresenter extends BasePresenter {
 
         Task task = new Task("Minha atividade", "A garagem deverá ser muito bem limpada", authenticatedUser , days);
         UserAuthenticator.setAuthenticatedUserTask(task);
-        this.tasks.add(task);
+        MockTasks.addTask(task);
     }
 
     private void mockTasksOtherUsers(int i){
@@ -72,11 +70,11 @@ public class ListTasksPresenter extends BasePresenter {
         User user  = new User("Other user " + i, "../user_img.jpg", "otheruser@gmail.com");
         Task task = new Task("Limpar banheiro " + i, "Banheiro deverá ser limpo muito bem limpado", user , days);
 
-        tasks.add(task);
+        MockTasks.addTask(task);
     }
 
 
     public void loadTasks(){
-        fragment.showTasks(tasks);
+        fragment.showTasks(MockTasks.getTasks());
     }
 }

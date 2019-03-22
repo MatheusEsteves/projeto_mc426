@@ -10,17 +10,15 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.Toast;
 
+import com.rep.organiza.organizarep.Constants;
 import com.rep.organiza.organizarep.R;
 import com.rep.organiza.organizarep.Util.FragmentManager;
 import com.rep.organiza.organizarep.base.BaseFragment;
-import com.rep.organiza.organizarep.mock.UserAuthenticator;
 import com.rep.organiza.organizarep.model.Task;
-import com.rep.organiza.organizarep.model.User;
 import com.rep.organiza.organizarep.task.model.Status;
 import com.rep.organiza.organizarep.task.model.WeekDay;
-import com.rep.organiza.organizarep.task.model.WeekDaySelectable;
+import com.rep.organiza.organizarep.task.model.SelectableWeekDay;
 import com.rep.organiza.organizarep.task.presenter.CreateTaskPresenter;
 
 import java.util.ArrayList;
@@ -41,6 +39,9 @@ public class CreateTaskFragment extends BaseFragment{
 
     @Bind(R.id.et_new_task_description)
     EditText edDescription;
+
+    @Bind(R.id.et_new_task_title)
+    EditText edTitle;
 
     @Bind(R.id.cv_sunday_circle)
     CircleImageView cvSunday;
@@ -105,9 +106,10 @@ public class CreateTaskFragment extends BaseFragment{
         btNext.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                mockData();
+                setTasksAttributes();
+
                 Bundle b = new Bundle();
-                b.putSerializable("nomeDoObj", task);
+                b.putSerializable(Constants.DATATRANSFERING_FROM_CREATETASK_TO_USERSELECT, task);
 
                 SelectUserFragment fragment = new SelectUserFragment();
                 fragment.setArguments(b);
@@ -117,29 +119,16 @@ public class CreateTaskFragment extends BaseFragment{
         });
     }
 
-    private void mockData(){
-        User user  = new User("Matheus - Myself", "../authenticated_user_img.jpg", "matheusesteveszanoto@gmail.com");
-        List<WeekDay> days = new ArrayList<WeekDay>();
+    private void setTasksAttributes() {
+        List<WeekDay> days = presenter.getWeekDays();
 
-        WeekDay sun = new WeekDay("Dom", Status.done);
-        days.add(sun);
-        WeekDay mon = new WeekDay("Seg", Status.done);
-        days.add(mon);
-        WeekDay tue = new WeekDay("Ter", Status.done);
-        days.add(tue);
-        WeekDay wed = new WeekDay("Qua", Status.done);
-        days.add(wed);
-        WeekDay thu = new WeekDay("Qui", Status.done);
-        days.add(thu);
-        WeekDay fri = new WeekDay("Sex", Status.done);
-        days.add(fri);
-        WeekDay sat = new WeekDay("Sab", Status.done);
-        days.add(sat);
+        String description = edDescription.getText().toString();
+        String title = edTitle.getText().toString();
 
-        task = new Task("Minha atividade", "A garagem deverá ser muito bem limpada", user , days);
+        task = new Task(title, description, null , days);
     }
 
-    private void setCircleImageViewOnclick(ConstraintLayout layout, CircleImageView ic, WeekDaySelectable day){
+    private void setCircleImageViewOnclick(ConstraintLayout layout, CircleImageView ic, SelectableWeekDay day){
         layout.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -170,7 +159,7 @@ public class CreateTaskFragment extends BaseFragment{
         setCircleImageViewColor(cvSaturday, false);
     }
 
-    public void showDays(ArrayList<WeekDaySelectable> days) {
+    public void showDays(ArrayList<SelectableWeekDay> days) {
         setCircleImageViewOnclick(layoutSunday, cvSunday, days.get(0));
         setCircleImageViewOnclick(layoutMonday, cvMonday, days.get(1));
         setCircleImageViewOnclick(layoutTuesday, cvTuesday, days.get(2));
@@ -178,6 +167,6 @@ public class CreateTaskFragment extends BaseFragment{
         setCircleImageViewOnclick(layoutThursday, cvThursday, days.get(4));
         setCircleImageViewOnclick(layoutFriday, cvFriday, days.get(5));
         setCircleImageViewOnclick(layoutSaturday, cvSaturday, days.get(6));
-
     }
+
 }
