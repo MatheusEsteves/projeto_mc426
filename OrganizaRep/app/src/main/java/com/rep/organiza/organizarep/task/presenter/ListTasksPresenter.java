@@ -13,16 +13,21 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class ListTasksPresenter extends BasePresenter {
+    private static boolean isDataLoaded = false;
     private ListTasksFragment fragment;
 
     public ListTasksPresenter(ListTasksFragment fragment){
         this.fragment = fragment;
 
-        User user  = new User("Matheus - Myself", "../authenticated_user_img.jpg", "matheusesteveszanoto@gmail.com");
-        mockTasksAuthenticatedUser(user);
+        if(!isDataLoaded) {
+            User user  = new User("Eu", "../authenticated_user_img.jpg", "matheusesteveszanoto@gmail.com");
+            mockTasksAuthenticatedUser(user);
 
-        for(int i=1; i<10; i++) {
-            mockTasksOtherUsers(i);
+            for (int i = 1; i < 10; i++) {
+                mockTasksOtherUsers(i);
+            }
+
+            isDataLoaded = true;
         }
     }
 
@@ -31,17 +36,17 @@ public class ListTasksPresenter extends BasePresenter {
 
         WeekDay sun = new WeekDay("Dom", Status.done);
         days.add(sun);
-        WeekDay mon = new WeekDay("Seg", Status.done);
+        WeekDay mon = new WeekDay("Seg", Status.notTaskDay);
         days.add(mon);
-        WeekDay tue = new WeekDay("Ter", Status.done);
+        WeekDay tue = new WeekDay("Ter", Status.notTaskDay);
         days.add(tue);
         WeekDay wed = new WeekDay("Qua", Status.done);
         days.add(wed);
-        WeekDay thu = new WeekDay("Qui", Status.done);
+        WeekDay thu = new WeekDay("Qui", Status.late);
         days.add(thu);
-        WeekDay fri = new WeekDay("Sex", Status.done);
+        WeekDay fri = new WeekDay("Sex", Status.notTaskDay);
         days.add(fri);
-        WeekDay sat = new WeekDay("Sab", Status.done);
+        WeekDay sat = new WeekDay("Sab", Status.notTaskDay);
         days.add(sat);
 
         Task task = new Task("Minha atividade", "A garagem deverá ser muito bem limpada", authenticatedUser , days);
@@ -54,20 +59,20 @@ public class ListTasksPresenter extends BasePresenter {
 
         WeekDay sun = new WeekDay("Dom", Status.done);
         days.add(sun);
-        WeekDay mon = new WeekDay("Seg", Status.toDo);
+        WeekDay mon = new WeekDay("Seg", Status.notTaskDay);
         days.add(mon);
         WeekDay tue = new WeekDay("Ter", Status.exchanged);
         days.add(tue);
         WeekDay wed = new WeekDay("Qua", Status.notTaskDay);
         days.add(wed);
-        WeekDay thu = new WeekDay("Qui", Status.notTaskDay);
+        WeekDay thu = new WeekDay("Qui", Status.late);
         days.add(thu);
-        WeekDay fri = new WeekDay("Sex", Status.late);
+        WeekDay fri = new WeekDay("Sex", Status.toDo);
         days.add(fri);
         WeekDay sat = new WeekDay("Sab", Status.notTaskDay);
         days.add(sat);
 
-        User user  = new User("Other user " + i, "../user_img.jpg", "otheruser@gmail.com");
+        User user  = new User("Lula " + i, "../user_img.jpg", "otheruser@gmail.com");
         Task task = new Task("Limpar banheiro " + i, "Banheiro deverá ser limpo muito bem limpado", user , days);
 
         MockTasks.addTask(task);

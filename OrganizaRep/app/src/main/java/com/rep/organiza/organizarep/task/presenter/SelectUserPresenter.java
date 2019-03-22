@@ -1,6 +1,8 @@
 package com.rep.organiza.organizarep.task.presenter;
 
 import com.rep.organiza.organizarep.base.BasePresenter;
+import com.rep.organiza.organizarep.mock.MockTasks;
+import com.rep.organiza.organizarep.model.Task;
 import com.rep.organiza.organizarep.model.User;
 import com.rep.organiza.organizarep.task.model.SelectableUser;
 import com.rep.organiza.organizarep.task.view.SelectUserFragment;
@@ -23,6 +25,10 @@ public class SelectUserPresenter extends BasePresenter {
     private void mockData(int i) {
         SelectableUser user  = new SelectableUser("Lulinha "+i, "", ""+i, false);
         list.add(user);
+    }
+
+    public void addTask(Task task){
+        MockTasks.addTaskInBeginning(task);
     }
 
     public void loadUser(){

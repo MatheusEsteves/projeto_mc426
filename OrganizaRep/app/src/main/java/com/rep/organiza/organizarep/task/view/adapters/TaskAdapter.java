@@ -97,7 +97,7 @@ public class TaskAdapter extends RecyclerView.Adapter<TaskAdapter.TaskViewHolder
                 icon.setColorFilter(color, PorterDuff.Mode.SRC_IN);
                 img.setImageDrawable(icon);
             }else{
-                img.setColorFilter(getStatusColor(weekDay.getStatus()),  PorterDuff.Mode.SRC_IN);
+                img.setColorFilter(getStatusColor(weekDay.getStatus()),  PorterDuff.Mode.SRC);
             }
         }
     }

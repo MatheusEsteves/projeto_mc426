@@ -11,7 +11,18 @@ public class MockTasks {
         tasks.add(task);
     }
 
+    public static void addTaskInBeginning(Task task){
+        if(isEmpty()) {
+            tasks.add(0,task);
+        }else {
+            tasks.add(1,task);
+        }
+    }
     public static ArrayList<Task> getTasks(){
         return tasks;
+    }
+
+    public static boolean isEmpty() {
+        return tasks.size()==0;
     }
 }

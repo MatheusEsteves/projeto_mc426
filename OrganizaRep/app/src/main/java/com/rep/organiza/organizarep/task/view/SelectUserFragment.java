@@ -85,7 +85,7 @@ public class SelectUserFragment extends BaseFragment {
             public void onClick(View v) {
                 User user = presenter.getSelectedUser();
                 task.setUser(user);
-                MockTasks.addTask(task);
+                presenter.addTask(task);
                 FragmentManager.replaceFragment(R.id.container_task, new ListTasksFragment(), "f3", true, getFragmentManager());
             }
         });
