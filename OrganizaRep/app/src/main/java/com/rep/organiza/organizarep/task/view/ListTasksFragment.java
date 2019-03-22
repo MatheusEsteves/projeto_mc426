@@ -48,7 +48,7 @@ public class ListTasksFragment extends BaseFragment{
 
     public void showTasks(ArrayList<Task> tasks) {
         if (tasks != null && !tasks.isEmpty()) {
-            TaskAdapter adapter = new TaskAdapter(tasks, this.getContext(), activity);
+            TaskAdapter adapter = new TaskAdapter(tasks, this.getContext(), this);
             LinearLayoutManager layoutManager = new LinearLayoutManager(getActivity());
             layoutManager.setOrientation(LinearLayoutManager.VERTICAL);
             recyclerView.setLayoutManager(layoutManager);
@@ -60,5 +60,9 @@ public class ListTasksFragment extends BaseFragment{
 
     private void showEmptyState() {
         Toast.makeText(null, "Não há atividades", Toast.LENGTH_LONG);
+    }
+
+    public RecyclerView getRecyclerView(){
+        return this.recyclerView;
     }
 }

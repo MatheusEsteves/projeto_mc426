@@ -26,6 +26,7 @@ import com.rep.organiza.organizarep.model.Task;
 import com.rep.organiza.organizarep.task.model.Status;
 import com.rep.organiza.organizarep.task.model.WeekDay;
 import com.rep.organiza.organizarep.task.view.ChangeTaskFragment;
+import com.rep.organiza.organizarep.task.view.ListTasksFragment;
 import com.rep.organiza.organizarep.task.view.TaskActivity;
 import com.squareup.picasso.Picasso;
 
@@ -39,12 +40,12 @@ public class TaskAdapter extends RecyclerView.Adapter<TaskAdapter.TaskViewHolder
 
     private ArrayList<Task> listTask;
     private Context mContext;
-    private TaskActivity taskActivity;
+    private ListTasksFragment mFragment;
 
-    public TaskAdapter(ArrayList<Task> list, Context context, TaskActivity taskActivity) {
+    public TaskAdapter(ArrayList<Task> list, Context context, ListTasksFragment fragment) {
         this.listTask = list;
         this.mContext = context;
-        this.taskActivity = taskActivity;
+        this.mFragment = fragment;
     }
 
     @Override
@@ -205,9 +206,9 @@ public class TaskAdapter extends RecyclerView.Adapter<TaskAdapter.TaskViewHolder
                     ChangeTaskFragment changeTaskFragment = new ChangeTaskFragment();
                     changeTaskFragment.setArguments(bundle);
 
-                    FragmentManager.replaceFragment(R.id.container_task,
+                    FragmentManager.addFragment(R.id.container_task,
                             changeTaskFragment, changeTaskFragmentIdentification, false,
-                            taskActivity.getSupportFragmentManager());
+                            mFragment.getActivity().getSupportFragmentManager());
                 }
             });
         }

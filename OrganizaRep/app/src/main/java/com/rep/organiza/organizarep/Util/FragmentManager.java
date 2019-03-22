@@ -20,6 +20,20 @@ public class FragmentManager {
         transaction.commit();
     }
 
+    public static void addFragment(@IdRes int container, Fragment fragment,
+                                       String label, boolean toBack, android.support.v4.app.FragmentManager fragmentManager) {
+
+        FragmentTransaction transaction = fragmentManager.beginTransaction();
+        transaction.setTransition(FragmentTransaction.TRANSIT_FRAGMENT_CLOSE);
+        transaction.add(container, fragment, label);
+
+        if (toBack) {
+            transaction.addToBackStack(label);
+        }
+
+        transaction.commit();
+    }
+
     public static void removeFragment(Fragment fragment, android.support.v4.app.FragmentManager fragmentManager){
         FragmentTransaction transaction = fragmentManager.beginTransaction();
         transaction.remove(fragment);
