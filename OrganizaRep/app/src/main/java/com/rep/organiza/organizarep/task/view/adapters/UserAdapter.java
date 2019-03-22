@@ -2,11 +2,7 @@ package com.rep.organiza.organizarep.task.view.adapters;
 
 import android.content.Context;
 import android.content.res.ColorStateList;
-import android.graphics.Color;
-import android.graphics.drawable.ColorDrawable;
-import android.graphics.drawable.Drawable;
 import android.os.Build;
-import android.support.annotation.RequiresApi;
 import android.support.constraint.ConstraintLayout;
 import android.support.v4.content.ContextCompat;
 import android.support.v7.widget.RecyclerView;
@@ -15,35 +11,34 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.rep.organiza.organizarep.R;
 import com.rep.organiza.organizarep.model.User;
-import com.rep.organiza.organizarep.task.model.UserSelect;
+import com.rep.organiza.organizarep.task.listeners.OnItemSelectedListener;
+import com.rep.organiza.organizarep.task.model.SelectableUser;
 import com.squareup.picasso.Picasso;
 
 import java.util.List;
 
 import de.hdodenhof.circleimageview.CircleImageView;
 
-public class UserAdapter extends RecyclerView.Adapter {
+public class UserAdapter extends RecyclerView.Adapter implements OnItemSelectedListener {
     private static final boolean SELECTED = true;
     private static final boolean UNSELECTED = false;
 
-    private List<UserSelect> listUser;
+    private List<SelectableUser> listUser;
     private Context mContext;
 
-    public UserAdapter(List<UserSelect> list, Context context) {
+    public UserAdapter(List<SelectableUser> list, Context context) {
         this.listUser = list;
         mContext = context;
     }
 
-    @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
     @Override
     public RecyclerView.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-        View v = LayoutInflater.from(parent.getContext()).inflate(R.layout.item_rep_member_selected, parent, false);
+        View v = LayoutInflater.from(parent.getContext()).inflate(R.layout.item_rep_member, parent, false);
 
-        return new UserViewHolder(v);
+        return new UserViewHolder(v, this);
     }
 
     @Override
@@ -53,15 +48,30 @@ public class UserAdapter extends RecyclerView.Adapter {
 
     private void bindUserViewHolder(UserViewHolder holder, int position) {
         UserViewHolder userViewHolder = holder;
+        SelectableUser selectableUser = listUser.get(position);
 
-        User user = listUser.get(position);
-
-        String userName = user.getUserName();
-        String userImgPath = user.getUserImagePath();
+        String userName = selectableUser.getUserName();
+        String userImgPath = selectableUser.getUserImagePath();
 
         userViewHolder.tvUserName.setText(userName);
-
         setImage(userViewHolder.cvUserImage, userImgPath);
+        holder.selectableUser = selectableUser;
+        holder.setChecked(holder.selectableUser.isSelected());
+    }
+
+    @Override
+    public void onItemSelected(SelectableUser item) {
+
+        for (SelectableUser selectableUser : listUser) {
+            if (selectableUser.equals(item) && !selectableUser.isSelected()) {
+                selectableUser.setSelected(true);
+            }else{
+                if(!selectableUser.equals(item) && selectableUser.isSelected()) {
+                    selectableUser.setSelected(false);
+                }
+            }
+        }
+        notifyDataSetChanged();
     }
 
     private void setImage(ImageView img, String imgPath) {
@@ -76,60 +86,64 @@ public class UserAdapter extends RecyclerView.Adapter {
         return listUser != null ? listUser.size() : 0;
     }
 
-    public class UserViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener{
+    public class UserViewHolder extends RecyclerView.ViewHolder{
         TextView tvUserName;
         CircleImageView cvUserImage;
         ConstraintLayout layoutUserItem;
         ImageView ivCheckCircle;
 
-        @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
-        public UserViewHolder(View itemView) {
+        OnItemSelectedListener itemSelectedListener;
+        SelectableUser selectableUser;
+
+        public UserViewHolder(View itemView, OnItemSelectedListener listener) {
             super(itemView);
 
+            this.itemSelectedListener = listener;
             tvUserName = itemView.findViewById(R.id.tv_user_name);
             cvUserImage = itemView.findViewById(R.id.cv_user_image);
             layoutUserItem = itemView.findViewById(R.id.layout_user_item);
             ivCheckCircle = itemView.findViewById(R.id.iv_check_circle);
 
-            setSelection(false);
-
             itemView.setOnClickListener(new View.OnClickListener() {
-                @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
+
                 @Override
                 public void onClick(View view) {
                    if(ivCheckCircle.getVisibility() == View.VISIBLE){
-                       setSelection(UNSELECTED);
+                       setChecked(UNSELECTED);
                    }else{
-                       setSelection(SELECTED);
+                       setChecked(SELECTED);
                    }
+
+                   itemSelectedListener.onItemSelected(selectableUser);
                 }
             });
         }
 
-        @Override
-        public void onClick(View view) {
-            Toast.makeText(mContext, "Usuário selecionado", Toast.LENGTH_LONG).show();
-
-        }
-
-        @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
-        public void setSelection(boolean isSelected) {
+       public void setChecked(boolean isSelected) {
             int color;
 
             if(isSelected){
                 color = ContextCompat.getColor(itemView.getContext(), R.color.colorMemberSelected);
                 ColorStateList tint = ColorStateList.valueOf(color);
-                layoutUserItem.setBackgroundTintList(tint);
-                layoutUserItem.setBackgroundColor(color);
 
+                if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+                    layoutUserItem.setBackgroundTintList(tint);
+                }
+
+                layoutUserItem.setBackgroundColor(color);
                 ivCheckCircle.setVisibility(View.VISIBLE);
             }else {
                 color = ContextCompat.getColor(itemView.getContext(), R.color.colorListItemDefault);
                 ColorStateList tint = ColorStateList.valueOf(color);
-                layoutUserItem.setBackgroundTintList(tint);
+
+                if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+                    layoutUserItem.setBackgroundTintList(tint);
+                }
 
                 ivCheckCircle.setVisibility(View.INVISIBLE);
             }
+
+            selectableUser.setSelected(isSelected);
         }
     }
 }

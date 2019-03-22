@@ -13,9 +13,8 @@ import android.widget.Toast;
 import com.rep.organiza.organizarep.R;
 import com.rep.organiza.organizarep.base.BaseFragment;
 import com.rep.organiza.organizarep.model.Task;
-import com.rep.organiza.organizarep.model.User;
 import com.rep.organiza.organizarep.Util.FragmentManager;
-import com.rep.organiza.organizarep.task.model.UserSelect;
+import com.rep.organiza.organizarep.task.model.SelectableUser;
 import com.rep.organiza.organizarep.task.presenter.SelectUserPresenter;
 import com.rep.organiza.organizarep.task.view.adapters.UserAdapter;
 
@@ -58,7 +57,7 @@ public class SelectUserFragment extends BaseFragment {
     }
 
 
-    public void showUsers(List<UserSelect> users) {
+    public void showUsers(List<SelectableUser> users) {
         if (users != null && !users.isEmpty()) {
             UserAdapter adapter = new UserAdapter(users, this.getContext());
 
