@@ -17,6 +17,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.rep.organiza.organizarep.Constants;
 import com.rep.organiza.organizarep.R;
 import com.rep.organiza.organizarep.Util.FragmentManager;
 import com.rep.organiza.organizarep.base.BaseActivity;
@@ -26,6 +27,7 @@ import com.rep.organiza.organizarep.task.model.Status;
 import com.rep.organiza.organizarep.task.model.WeekDay;
 import com.rep.organiza.organizarep.task.view.AlertTaskFragment;
 import com.rep.organiza.organizarep.task.view.ChangeTaskFragment;
+import com.rep.organiza.organizarep.task.view.ListTasksFragment;
 import com.rep.organiza.organizarep.task.view.TaskActivity;
 import com.squareup.picasso.Picasso;
 
@@ -39,12 +41,12 @@ public class TaskAdapter extends RecyclerView.Adapter<TaskAdapter.TaskViewHolder
 
     private ArrayList<Task> listTask;
     private Context mContext;
-    private TaskActivity taskActivity;
+    private ListTasksFragment mFragment;
 
-    public TaskAdapter(ArrayList<Task> list, Context context, TaskActivity taskActivity) {
+    public TaskAdapter(ArrayList<Task> list, Context context, ListTasksFragment fragment) {
         this.listTask = list;
         this.mContext = context;
-        this.taskActivity = taskActivity;
+        this.mFragment = fragment;
     }
 
     @Override
@@ -97,7 +99,7 @@ public class TaskAdapter extends RecyclerView.Adapter<TaskAdapter.TaskViewHolder
                 icon.setColorFilter(color, PorterDuff.Mode.SRC_IN);
                 img.setImageDrawable(icon);
             }else{
-                img.setColorFilter(getStatusColor(weekDay.getStatus()),  PorterDuff.Mode.SRC_IN);
+                img.setColorFilter(getStatusColor(weekDay.getStatus()),  PorterDuff.Mode.SRC);
             }
         }
     }
@@ -194,9 +196,9 @@ public class TaskAdapter extends RecyclerView.Adapter<TaskAdapter.TaskViewHolder
                     AlertTaskFragment alertTaskFragment = new AlertTaskFragment();
                     alertTaskFragment.setArguments(bundle);
 
-                    FragmentManager.replaceFragment(R.id.container_alert_task,
+                    FragmentManager.addFragment(R.id.container_task,
                             alertTaskFragment, alertTaskFragmentIdentification, false,
-                            taskActivity.getSupportFragmentManager());
+                            mFragment.getActivity().getSupportFragmentManager());
                 }
             });
         }
@@ -208,15 +210,14 @@ public class TaskAdapter extends RecyclerView.Adapter<TaskAdapter.TaskViewHolder
                     String changeTaskFragmentIdentification = "frag_1";
 
                     Bundle bundle = new Bundle();
-                    bundle.putSerializable("taskOtherUser", taskOtherUser);
-                    bundle.putSerializable("listTask", listTask);
+                    bundle.putSerializable(Constants.DATATRANSFERING_FROM_TASKITEM_TO_CHANGETASK, taskOtherUser);
 
                     ChangeTaskFragment changeTaskFragment = new ChangeTaskFragment();
                     changeTaskFragment.setArguments(bundle);
 
-                    FragmentManager.replaceFragment(R.id.container_change_task,
+                    FragmentManager.addFragment(R.id.container_task,
                             changeTaskFragment, changeTaskFragmentIdentification, false,
-                            taskActivity.getSupportFragmentManager());
+                            mFragment.getActivity().getSupportFragmentManager());
                 }
             });
         }

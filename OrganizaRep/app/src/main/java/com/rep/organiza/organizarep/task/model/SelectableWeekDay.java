@@ -1,9 +1,9 @@
 package com.rep.organiza.organizarep.task.model;
 
-public class WeekDaySelectable extends WeekDay {
+public class SelectableWeekDay extends WeekDay {
     private boolean isSelected;
 
-    public WeekDaySelectable(String name, boolean isSelected) {
+    public SelectableWeekDay(String name, boolean isSelected) {
         super(name, Status.notTaskDay);
         this.isSelected = isSelected;
     }
