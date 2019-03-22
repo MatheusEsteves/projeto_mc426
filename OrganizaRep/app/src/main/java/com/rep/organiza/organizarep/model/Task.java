@@ -3,6 +3,7 @@ package com.rep.organiza.organizarep.model;
 import com.rep.organiza.organizarep.task.model.WeekDay;
 
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.List;
 
 public class Task implements Serializable {
@@ -14,8 +15,8 @@ public class Task implements Serializable {
     public Task(String title, String description, User user, List<WeekDay> weekDays) {
         this.title = title;
         Description = description;
-        this.user = user;
         this.weekDays = weekDays;
+        this.user = user;
     }
 
     public String getTitle() {

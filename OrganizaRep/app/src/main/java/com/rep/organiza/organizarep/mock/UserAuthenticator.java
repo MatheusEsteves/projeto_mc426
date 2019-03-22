@@ -3,6 +3,8 @@ package com.rep.organiza.organizarep.mock;
 import com.rep.organiza.organizarep.model.Task;
 import com.rep.organiza.organizarep.model.User;
 
+import java.util.List;
+
 public class UserAuthenticator {
 
     private static Task authenticatedUserTask;

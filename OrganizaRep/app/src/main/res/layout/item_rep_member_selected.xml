@@ -10,7 +10,8 @@
     android:background="@drawable/layout_round_corner"
     android:backgroundTint="@color/colorMemberSelected"
     android:layout_marginTop="@dimen/default_margin"
-    android:layout_marginBottom="5dp">
+    android:layout_marginBottom="5dp"
+    android:id="@+id/layout_user_item">
 
 
     <de.hdodenhof.circleimageview.CircleImageView

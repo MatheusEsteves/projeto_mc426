@@ -9,15 +9,22 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.EditText;
+import android.widget.Toast;
 
 import com.rep.organiza.organizarep.R;
 import com.rep.organiza.organizarep.Util.FragmentManager;
 import com.rep.organiza.organizarep.base.BaseFragment;
+import com.rep.organiza.organizarep.mock.UserAuthenticator;
+import com.rep.organiza.organizarep.model.Task;
+import com.rep.organiza.organizarep.model.User;
+import com.rep.organiza.organizarep.task.model.Status;
 import com.rep.organiza.organizarep.task.model.WeekDay;
 import com.rep.organiza.organizarep.task.model.WeekDaySelectable;
 import com.rep.organiza.organizarep.task.presenter.CreateTaskPresenter;
 
 import java.util.ArrayList;
+import java.util.List;
 
 import butterknife.Bind;
 import butterknife.ButterKnife;
@@ -27,7 +34,13 @@ public class CreateTaskFragment extends BaseFragment{
 
     private TaskActivity activity;
     private CreateTaskPresenter presenter;
-    private Button btNext;
+    private Task task;
+
+    @Bind(R.id.bt_next)
+    Button btNext;
+
+    @Bind(R.id.et_new_task_description)
+    EditText edDescription;
 
     @Bind(R.id.cv_sunday_circle)
     CircleImageView cvSunday;
@@ -82,7 +95,6 @@ public class CreateTaskFragment extends BaseFragment{
         View view = inflater.inflate(R.layout.fragment_create_task, container, false);
         ButterKnife.bind(this, view);
         activity = (TaskActivity) this.getActivity();
-        btNext = view.findViewById(R.id.bt_next);
         setNextButtonOnclick();
         presenter.loadTasks();
         initializeWeekDays();
@@ -93,9 +105,38 @@ public class CreateTaskFragment extends BaseFragment{
         btNext.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                FragmentManager.replaceFragment(R.id.container_task, new ListTasksFragment(), "f2", true, getFragmentManager());
+                mockData();
+                Bundle b = new Bundle();
+                b.putSerializable("nomeDoObj", task);
+
+                SelectUserFragment fragment = new SelectUserFragment();
+                fragment.setArguments(b);
+
+                FragmentManager.replaceFragment(R.id.container_task, fragment, "f2", true, getFragmentManager());
             }
         });
+    }
+
+    private void mockData(){
+        User user  = new User("Matheus - Myself", "../authenticated_user_img.jpg", "matheusesteveszanoto@gmail.com");
+        List<WeekDay> days = new ArrayList<WeekDay>();
+
+        WeekDay sun = new WeekDay("Dom", Status.done);
+        days.add(sun);
+        WeekDay mon = new WeekDay("Seg", Status.done);
+        days.add(mon);
+        WeekDay tue = new WeekDay("Ter", Status.done);
+        days.add(tue);
+        WeekDay wed = new WeekDay("Qua", Status.done);
+        days.add(wed);
+        WeekDay thu = new WeekDay("Qui", Status.done);
+        days.add(thu);
+        WeekDay fri = new WeekDay("Sex", Status.done);
+        days.add(fri);
+        WeekDay sat = new WeekDay("Sab", Status.done);
+        days.add(sat);
+
+        task = new Task("Minha atividade", "A garagem deverá ser muito bem limpada", user , days);
     }
 
     private void setCircleImageViewOnclick(ConstraintLayout layout, CircleImageView ic, WeekDaySelectable day){
