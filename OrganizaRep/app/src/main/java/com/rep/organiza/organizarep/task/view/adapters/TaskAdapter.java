@@ -205,7 +205,7 @@ public class TaskAdapter extends RecyclerView.Adapter<TaskAdapter.TaskViewHolder
                     ChangeTaskFragment changeTaskFragment = new ChangeTaskFragment();
                     changeTaskFragment.setArguments(bundle);
 
-                    FragmentManager.replaceFragment(R.id.container_change_task,
+                    FragmentManager.replaceFragment(R.id.container_task,
                             changeTaskFragment, changeTaskFragmentIdentification, false,
                             taskActivity.getSupportFragmentManager());
                 }

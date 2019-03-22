@@ -22,9 +22,6 @@ public class TaskActivity extends BaseActivity {
     @Bind(R.id.container_task)
     FrameLayout containerFragment;
 
-    @Bind(R.id.container_change_task)
-    FrameLayout changeTaskFragment;
-
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
